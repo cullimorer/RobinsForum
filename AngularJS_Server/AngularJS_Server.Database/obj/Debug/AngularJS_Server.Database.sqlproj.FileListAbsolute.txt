@@ -1,0 +1,5 @@
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Database\bin\Debug\AngularJS_Server.Database.dacpac
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Database\bin\Debug\AngularJS_Server.Database.dll
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Database\bin\Debug\AngularJS_Server.Database.pdb
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Database\obj\Debug\AngularJS_Server.Database.dll
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Database\obj\Debug\AngularJS_Server.Database.pdb

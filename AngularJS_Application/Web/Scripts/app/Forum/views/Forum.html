@@ -1,0 +1,72 @@
+﻿<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Thread</p>
+            <div class="list-group" ng-repeat="thread in threads">
+                <a href="#" class="list-group-item" ng-class="{active: thread.Id == currentThreadId}" ng-click="getPosts(thread.Id)">{{thread.Name}}</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <input id="Text1" type="text" class="form-control input-sm" ng-model="newThread.Name" placeholder="Type the new thread name here..." />
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="newThread.CategoryId">
+                            <option ng-repeat="category in categories" value="{{category.Id}}">{{category.Name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary" ng-click="createNewThread(newThread);">Create New Thread</button>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span>Forum Thread Title
+                    </div>
+                    <div class="panel-body">
+                        <ul class="forum" ng-repeat="post in posts">
+                            <li class="left clearfix"><span class="forum-img pull-left">
+                                <img src="//graph.facebook.com/{{post.OauthUser.OauthId}}/picture" alt="User Avatar" class="img-circle" />
+                            </span>
+                                <div class="forum-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">{{post.OauthUser.Username}}</strong> <small class="pull-right text-muted">
+                                            <span class="glyphicon glyphicon-time"></span>{{post.CreatedOn | date:'fullDate'}}</small>
+                                    </div>
+                                    <p>
+                                        {{post.Content}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" ng-model="newPost.Content" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-forum" ng-click="sendPost(newPost)">
+                                    Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

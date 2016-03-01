@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[OauthProviders]
+       [dbo].[OauthUsers]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [dbo].[FK_OauthUsers_OauthProviders] (Foreign Key)
+     Table rebuild
+       [dbo].[OauthProviders] (Table)
+       [dbo].[OauthUsers] (Table)
+     Create
+       [dbo].[FK_OauthUsers_OauthProviders] (Foreign Key)
+
+** Supporting actions

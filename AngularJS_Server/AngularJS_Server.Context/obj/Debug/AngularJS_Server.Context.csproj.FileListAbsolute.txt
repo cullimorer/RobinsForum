@@ -1,0 +1,8 @@
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\bin\Debug\AngularJS_Server.Context.dll.config
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\bin\Debug\AngularJS_Server.Context.dll
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\bin\Debug\AngularJS_Server.Context.pdb
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\bin\Debug\EntityFramework.dll
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\bin\Debug\EntityFramework.xml
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\obj\Debug\AngularJS_Server.Context.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\obj\Debug\AngularJS_Server.Context.dll
+D:\Visual Studio 2012\Projects\AngularJS_Server\AngularJS_Server.Context\obj\Debug\AngularJS_Server.Context.pdb

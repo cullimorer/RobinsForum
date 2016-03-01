@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AngularJS_Server.DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AngularJS_ServerDatabaseModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="AngularJS_Server.DatabaseModel.Store.__RefactorLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="AngularJS_Server.DatabaseModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OauthProviders" EntityType="AngularJS_Server.DatabaseModel.Store.OauthProviders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OauthUsers" EntityType="AngularJS_Server.DatabaseModel.Store.OauthUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Posts" EntityType="AngularJS_Server.DatabaseModel.Store.Posts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Threads" EntityType="AngularJS_Server.DatabaseModel.Store.Threads" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_OauthUsers_OauthProviders" Association="AngularJS_Server.DatabaseModel.Store.FK_OauthUsers_OauthProviders">
+      <End Role="OauthProviders" EntitySet="OauthProviders" />
+      <End Role="OauthUsers" EntitySet="OauthUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_OauthUsers" Association="AngularJS_Server.DatabaseModel.Store.FK_Posts_OauthUsers">
+      <End Role="OauthUsers" EntitySet="OauthUsers" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_Threads" Association="AngularJS_Server.DatabaseModel.Store.FK_Posts_Threads">
+      <End Role="Threads" EntitySet="Threads" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Threads_Categories" Association="AngularJS_Server.DatabaseModel.Store.FK_Threads_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Threads" EntitySet="Threads" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="OauthProviders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OauthUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="OauthId" Type="varchar(max)" Nullable="false" />
+    <Property Name="OauthProviderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="1500" />
+    <Property Name="OauthUserId" Type="int" Nullable="false" />
+    <Property Name="ThreadId" Type="int" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Threads">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_OauthUsers_OauthProviders">
+    <End Role="OauthProviders" Type="AngularJS_Server.DatabaseModel.Store.OauthProviders" Multiplicity="1" />
+    <End Role="OauthUsers" Type="AngularJS_Server.DatabaseModel.Store.OauthUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OauthProviders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OauthUsers">
+        <PropertyRef Name="OauthProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_OauthUsers">
+    <End Role="OauthUsers" Type="AngularJS_Server.DatabaseModel.Store.OauthUsers" Multiplicity="1" />
+    <End Role="Posts" Type="AngularJS_Server.DatabaseModel.Store.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OauthUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="OauthUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_Threads">
+    <End Role="Threads" Type="AngularJS_Server.DatabaseModel.Store.Threads" Multiplicity="1" />
+    <End Role="Posts" Type="AngularJS_Server.DatabaseModel.Store.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Threads">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="ThreadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Threads_Categories">
+    <End Role="Categories" Type="AngularJS_Server.DatabaseModel.Store.Categories" Multiplicity="1" />
+    <End Role="Threads" Type="AngularJS_Server.DatabaseModel.Store.Threads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Threads">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

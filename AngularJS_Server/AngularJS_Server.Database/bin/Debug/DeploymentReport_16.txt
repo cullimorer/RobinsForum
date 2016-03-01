@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Categories]
+       [dbo].[Posts]
+       [dbo].[Threads]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Categories] (Table)
+       [dbo].[Posts] (Table)
+       [dbo].[Threads] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Threads_Categories] (Foreign Key)
+       [dbo].[FK_Posts_OauthUsers] (Foreign Key)
+       [dbo].[FK_Posts_Threads] (Foreign Key)
+     Create
+       [dbo].[FK_Threads_Categories] (Foreign Key)
+       [dbo].[FK_Posts_OauthUsers] (Foreign Key)
+       [dbo].[FK_Posts_Threads] (Foreign Key)
