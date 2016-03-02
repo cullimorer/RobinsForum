@@ -31,6 +31,9 @@ app.service("loginService", ['sharedService', 'ezfb', '$rootScope', '$state', fu
                     $state.go('login'); // go to login
                 } else {
                     $rootScope.loggedIn = true;
+                    getOauthUserByOauthId(res.authResponse.userID).then(function (data) {
+                        $rootScope.authenticatedUser = data;
+                    });
                 }
             });
         },
